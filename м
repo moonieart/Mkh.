@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пикми, ты звезда!</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff69b4, #ffb6c1);
+            font-family: 'Comic Sans MS', Arial, sans-serif;
+            overflow: hidden;
+            color: #fff;
+        }
+        .container {
+            text-align: center;
+            animation: bounceIn 1.5s ease-in-out;
+            position: relative;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 3.5em;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+            color: #ff1493;
+        }
+        p {
+            font-size: 1.8em;
+            margin: 20px 0;
+            color: #ffe4e1;
+        }
+        .signature {
+            font-size: 1.5em;
+            font-style: italic;
+            color: #ff4500;
+            margin-top: 20px;
+        }
+        .cat {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: url('https://media.tenor.com/images/3b5f83f1b2b3c4b9f5e9e4b8e4f8e7b5/tenor.gif') no-repeat center;
+            background-size: cover;
+            animation: float 5s ease-in-out infinite;
+        }
+        .cat1 { top: 10%; left: 10%; }
+        .cat2 { top: 20%; right: 15%; animation-delay: 1s; }
+        .cat3 { bottom: 15%; left: 20%; animation-delay: 2s; }
+        .cat4 { bottom: 10%; right: 10%; animation-delay: 3s; }
+        .confetti {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #ffd700;
+            opacity: 0.9;
+            animation: fall 3s linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 0.9; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 10px;
+            background: #ff1493;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s, background 0.3s;
+        }
+        button:hover {
+            background: #c71585;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Пикми, ты просто огонь! 🔥</h1>
+        <p>С праздником, королева вайба! 🎉<br>
+           Пусть тусовки гремят, а счастье бьёт фонтаном!</p>
+        <button onclick="showMessage()">Ещё больше кайфа! 😎</button>
+        <p class="signature">С любовью, М 💖</p>
+    </div>
+    <div class="cat cat1"></div>
+    <div class="cat cat2"></div>
+    <div class="cat cat3"></div>
+    <div class="cat cat4"></div>
+
+    <script>
+        // Конфетти
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.background = ['#ffd700', '#ff69b4', '#00ff7f', '#1e90ff'][Math.floor(Math.random() * 4)];
+            confetti.style.animationDuration = Math.random() * 2 + 2 + 's';
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 4000);
+        }
+        setInterval(createConfetti, 150);
+
+        // Случайные сообщения
+        function showMessage() {
+            const messages = [
+                'Пикми, ты зажигаешь ярче дискошара! ✨',
+                'Танцуй, как будто никто не смотрит! 💃',
+                'Ты — королева этого праздника! 👑',
+                'Сияй, как бриллиант, подруга! 💎',
+                'Твой вайб — это чистый кайф! 😍'
+            ];
+            alert(messages[Math.floor(Math.random() * messages.length)]);
+        }
+    </script>
+</body>
+</html>
